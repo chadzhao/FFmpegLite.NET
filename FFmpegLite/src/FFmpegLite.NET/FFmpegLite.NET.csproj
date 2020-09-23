@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.1</Version>
+    <PackageReleaseNotes>A lightweight &amp; extentable wrapper of FFmpeg</PackageReleaseNotes>
+    <Description>A lightweight &amp; extentable wrapper of FFmpeg</Description>
+    <Copyright></Copyright>
+    <PackageProjectUrl>https://github.com/chadzhao/FFmpegLite.NET</PackageProjectUrl>
+    <Company>chadzhao</Company>
+    <Authors>chadzhao</Authors>
+  </PropertyGroup>
+
+</Project>
