@@ -1,8 +1,15 @@
 # FFmpegLite.NET
-A lightweight & extentable wrapper of FFmpeg
+A lightweight & extentable wrapper of FFmpeg.
 
+I used [FFmpeg.NET](https://github.com/cmxl/FFmpeg.NET) as my media lib, but it is not that good as I thought. So I made [FFmpegLite.NET](https://github.com/chadzhao/FFmpegLite.NET), major parts token from FFmpeg.NET, but has more features
 
-# Features
+- clear arguments with task (groupped by convert/get thumbnail/get metadata)
+- easy to extend by adding extra command
+- merge PR in-time :smile:
+
+**Important:** It is still in pre-release stage, recommand to use from v1.0.
+
+## Features
 - Use fluent syntax
 - Easy to extend
 
@@ -12,55 +19,61 @@ A lightweight & extentable wrapper of FFmpeg
 | --- | --- |
 | FFmpegLite.NET | [![NuGet](https://buildstats.info/nuget/FFmpegLite.NET)](https://www.nuget.org/packages/FFmpegLite.NET) |
 
-# Samples
+## Samples
 
 ``` C#
-// set Engine
-var ffmpeg = new Engine("C:\\ffmpeg\\ffmpeg.exe");
+// set default enviroment
+FFmpegEnviroment.SetPath(@"C:\ffmpeg\bin\ffmpeg.exe"); // linux use /usr/bin/ffmpeg
 
 // convert video
-var convertResult = await new ConvertTask(ffmpeg)
+var convertResult = await new FFmpegConvertTask()
     .FromFile(@"C:\Path\To_Video.flv") // set input file
-    .Resize(1920, 720) // set output frame size
-    .SeekVideo(TimeSpan.FromSeconds(10)) // start from 10 seconds
-    .MaxVideoDuration(TimeSpan.FromSeconds(30)) // set duration
-    .AudioSampleRate(AudioSampleRate.Hz44100) // set audio sample rate
-    .CropVideo(100, 200) // Crop video from point (100, 200)
-    .Fps(24) // use FPS 24
-    .ExtraArgument("-movflags +faststart") // can add extra arguments 
-    .ConvertAsync(@"C:\Path\To_Save_New_Video.mp4"); // start task
+    .Resize(null, 720) // set output frame size
+    .AppendExtraCommand(" -movflags +faststart ") // can add extra arguments 
+    .ConvertAsync("NewVideo.mp4"); // start task
+
+// get thumbnail
+var thumbailFile = await new FFmpegThumbnailTask()
+    .FromFile("video.mp4")
+    .GetThumbnailAsync("thumbnail.jpg");
+
+// get meta data
+var metadata = await new FFmpegMetadataTask()
+    .FromFile("video.mp4")
+    .GetMetadataAsync();
+
 ```
 
-# Extend
+## Extend
 
 It is very easy to extend this lib.
 
-#### ConvertTask.ExtraArgument()
+#### FFmpegTask.AppendExtraCommand()
 
 ``` C#
-var convertResult = await new ConvertTask(ffmpeg)
+var convertResult = await new FFmpegConvertTask(ffmpeg)
     .FromFile(@"C:\Path\To_Video.flv")
-    .ExtraArgument("-movflags +faststart") // can add extra arguments 
-    .ConvertAsync(@"C:\Path\To_Save_New_Video.mp4");
+    .AppendExtraCommand(" -movflags +faststart ") // can add extra arguments 
+    .ConvertAsync("NewVideo.mp4");
 ```
 
 #### Add Extension Method
 ``` C#
 public static class MyFFmpegLiteExtension
 {
-    public static ConvertTask NewMethod(this ConvertTask convertTask, object arg1)
+    public static FFmpegConvertTask UseFaststartFlags(this FFmpegConvertTask convertTask)
     {
-        
+        return convertTask.AppendExtraCommand(" -movflags +faststart ");
     }
 }
 
-var rst = await convertTask
+var rst = await new FFmpegConvertTask()
     .FromFile(@"C:\Path\To_Video.flv")
-    .NewMethod()
-    .ConvertAsync(@"C:\Path\To_Save_New_Video.mp4");
+    .UseFaststartFlags()
+    .ConvertAsync("NewVideo.mp4");
 ```
 
-# Contribution
+## Contribution
 
 You are encouraged to contribute this project by 
 - Report issues
