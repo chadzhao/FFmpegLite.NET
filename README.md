@@ -6,7 +6,11 @@ A lightweight & extentable wrapper of FFmpeg
 - Use fluent syntax
 - Easy to extend
 
-# Get started
+## Packages
+
+| Package | NuGet |
+| --- | --- |
+| FFmpegLite.NET | [![NuGet](https://buildstats.info/nuget/FFmpegLite.NET)](https://www.nuget.org/packages/FFmpegLite.NET) |
 
 # Samples
 
