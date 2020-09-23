@@ -100,6 +100,8 @@ namespace FFmpegLite.NET
             var process = new FFmpegProcess();
             await process.ExecuteAsync(task, enviroment, cancellationToken: cancellationToken);
 
+            task.OutputFile = new FileInfo(outputFile);
+
             return task.OutputFile;
         }
     }
