@@ -4,12 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>0.0.2</Version>
-    <PackageReleaseNotes>A lightweight &amp; extentable wrapper of FFmpeg</PackageReleaseNotes>
-    <Description>Fix convert output file bug</Description>
+    <PackageReleaseNotes>fix convert output file bug</PackageReleaseNotes>
+    <Description>A lightweight &amp; extentable wrapper of FFmpeg</Description>
     <Copyright></Copyright>
     <PackageProjectUrl>https://github.com/chadzhao/FFmpegLite.NET</PackageProjectUrl>
     <Company>chadzhao</Company>
     <Authors>chadzhao</Authors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
 </Project>
