@@ -51,7 +51,7 @@ namespace FFmpegLite.NET
         {
             task.OutputFile = new FileInfo(outputFile);
 
-            task.AppendCommand(CultureInfo.InvariantCulture, " -ss {0} ", TimeSpan.FromSeconds(1));
+            task.AppendCommand(CultureInfo.InvariantCulture, " -ss {0} ", TimeSpan.FromSeconds(0));
             task.AppendCommand(" -vframes {0} ", 1);
             task.AppendCommand($" \"{outputFile}\" ");
 

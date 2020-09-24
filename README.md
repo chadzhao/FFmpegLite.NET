@@ -19,6 +19,12 @@ I used [FFmpeg.NET](https://github.com/cmxl/FFmpeg.NET) as my media lib, but it 
 | --- | --- |
 | FFmpegLite.NET | [![NuGet](https://buildstats.info/nuget/FFmpegLite.NET)](https://www.nuget.org/packages/FFmpegLite.NET) |
 
+## Get started!
+
+Install [FFmpegLite.NET](https://github.com/chadzhao/FFmpegLite.NET) from nuget.org Package Source using the Package Manager Console with the following command
+
+    PM> Install-Package FFmpegLite.NET
+
 ## Samples
 
 ``` C#
