@@ -28,8 +28,8 @@ Install [FFmpegLite.NET](https://github.com/chadzhao/FFmpegLite.NET) from nuget.
 ## Samples
 
 ``` C#
-// set default enviroment
-FFmpegEnviroment.SetPath(@"C:\ffmpeg\bin\ffmpeg.exe"); // linux use /usr/bin/ffmpeg
+// set default enviroment for Windows OS
+FFmpegEnviroment.SetPath(@"C:\ffmpeg\bin\ffmpeg.exe"); // linux/ubuntu with ffmpeg installed just skip this step
 
 // convert video
 var convertResult = await new FFmpegConvertTask()
