@@ -7,7 +7,7 @@ I used [FFmpeg.NET](https://github.com/cmxl/FFmpeg.NET) as my media lib, but it 
 - easy to extend by adding extra command
 - merge PR in-time :smile:
 
-**Important:** It is still in pre-release stage, recommand to use from v1.0.
+**Important:** It is still in pre-release stage, recommend to use from v1.0.
 
 ## Features
 - Use fluent syntax
